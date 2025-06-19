@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form id="signup-form" onsubmit="signUpUser(event)">
+    <h2>Sign Up</h2>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit">Sign Up</button>
+    <p id="response" style="color: red;"></p>
+  </form>
+
+  <script>
+    const signupURL = "https://script.google.com/macros/s/AKfycbxYoTNkPDrh2exDbrD48AUd9o3ktxbgjTM7Oe0HuXpCyKD_yeZiAoX-vweiOATi2rsKjA/exec";
+
+    function signUpUser(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      const formData = new FormData();
+      formData.append("action", "signup"); // ✅ CRITICAL
+      formData.append("email", email);
+      formData.append("password", password);
+
+      fetch(signupURL, { method: "POST", body: formData })
+        .then(res => res.text())
+        .then(response => {
+          console.log("Server:", response); // Debug log
+
+          if (response === "success") {
+            document.getElementById("response").style.color = "green";
+            document.getElementById("response").textContent = "✅ Registered successfully!";
+            setTimeout(() => window.location.href = "home.html", 2000); // Go to login page
+          } else if (response === "exists") {
+            document.getElementById("response").textContent = "⚠️ Email already registered.";
+          } else {
+            document.getElementById("response").textContent = "❌ Registration failed.";
+          }
+        })
+        .catch(error => {
+          console.error("Signup error:", error);
+          document.getElementById("response").textContent = "❌ Network error.";
+        });
+    }
+  </script>
+</body>
+</html>
