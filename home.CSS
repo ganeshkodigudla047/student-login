@@ -1,40 +1,61 @@
 body{
     margin: 10 black;
-    background-color: rgb(194, 232, 232);
+    background-color: rgb(156, 209, 209);
     background-repeat: no-repeat;
     background-size: cover;
+    border: solid black;
     
 }
-.navbar-left{
-    padding-left: 20px;
-    height: 200px;
-}
-.int{
-    padding: 10px;
+  .nav-container {
     display: flex;
-    flex-direction:row;
     align-items: center;
-    font-size:5mm;
+    background-color: #8bc7c3;
+    padding: 10px 20px;
+  }
 
-}
-.title{
+  .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 30px;
+    border-radius: 50%; 
+    cursor: pointer;
+  }
+
+  .nav-links {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color:rgb(194, 232, 232) ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 1px;
-    border: solid rgb(12, 8, 8);
-}
-.int1{
-    padding: 5px;
-    margin: 10px;
-    font-family: 'Courier New', Courier, monospace;
-    color: rgb(11, 7, 7);
+    gap: 25px;
+  }
 
-    
-}
+  .nav-links a {
+    color: rgb(17, 14, 14);
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeInUp 0.4s ease forwards;
+  }
+
+  /* Fade one by one */
+  .nav-links a:nth-child(1) { animation-delay: 0.1s; }
+  .nav-links a:nth-child(2) { animation-delay: 0.2s; }
+  .nav-links a:nth-child(3) { animation-delay: 0.3s; }
+  .nav-links a:nth-child(4) { animation-delay: 0.4s; }
+  .nav-links a:nth-child(5) { animation-delay: 0.5s; }
+  .nav-links a:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Optional hover effect */
+  .nav-links a:hover {
+    color: #00ccff;
+  }
+
 .home{
     display: flex;
     flex-direction: row;
@@ -57,7 +78,7 @@ body{
 .LOGO{
     width: 200px;      
       height: 200px;
-      border-radius: 50%; 
+      
       object-fit: cover;
 
 }
