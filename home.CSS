@@ -1,185 +1,134 @@
-body{
-    margin: 10 black;
-    background-color: rgb(156, 209, 209);
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: solid black;
-    
+body {
+  margin: 10px;
+  background-color: rgb(156, 209, 209);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: solid black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.media{
-    @media screen and (max-width: 600px) {
-        .int {
-            flex-direction: column;
-            text-align: center;
-        }
-        .profile {
-            margin-top: 20px;
-        }
-    }
-}
-  .nav-container {
-    display: flex;
-    align-items: center;
-    background-color: #8bc7c3;
-    padding: 10px 20px;
-  }
-
-  .logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 30px;
-    border-radius: 50%; 
-    cursor: pointer;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 25px;
-  }
-
-  .nav-links a {
-    color: rgb(17, 14, 14);
-    text-decoration: none;
-    font-size: 16px;
-    position: relative;
-    opacity: 0;
-    transform: translateY(-10px);
-    animation: fadeInUp 0.4s ease forwards;
-  }
-
-  /* Fade one by one */
-  .nav-links a:nth-child(1) { animation-delay: 0.1s; }
-  .nav-links a:nth-child(2) { animation-delay: 0.2s; }
-  .nav-links a:nth-child(3) { animation-delay: 0.3s; }
-  .nav-links a:nth-child(4) { animation-delay: 0.4s; }
-  .nav-links a:nth-child(5) { animation-delay: 0.5s; }
-  .nav-links a:nth-child(6) { animation-delay: 0.6s; }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Optional hover effect */
-  .nav-links a:hover {
-    color: #00ccff;
-  }
-
-.home{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 80vh;
-    border: 2px solid rgb(9, 8, 8);
-    padding-left: 20px;
-    font-size:1cm;
-}
-.home-left{
-    color: rgb(4, 1, 1);
-    font-style: oblique;
-    text-align: right;
-}
-.home-right{
-    width: 50%;
-    padding-left: 100px;
-}
-.LOGO{
-    width: 200px;      
-      height: 200px;
-      
-      object-fit: cover;
-
-}
-.logo2{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%; 
-    object-fit: cover;
-}
-.head{
-    font-style:normal;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 20px;
-}
-.Services{
-    border: 5px solid rgb(5, 4, 4);
-}
-.sh{
-    font-family: Arial;
-    color: rgb(16, 16, 13);
-    font-style: italic;
-    font-size: 50px;
-    text-align: center;
-
-}
-.work{
-    padding-top: 10px;
-}
-.sub-Services{
-    color: rgb(17, 10, 10);
-    text-align: center;
-    display: flex;
-   justify-content: space-between;
-   padding: 10px;
-}
-.Service1{
-    font-size: 20px;
-    font-family: Arial;
-    border: 5px solid rgb(1, 1, 1);
-    margin: 2px;
-    padding: 5vh;
+/* Navbar */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #8bc7c3;
+  padding: 10px 20px;
 }
 
-.Service2{
-    font-size: 20px;
-    font-family: Arial;
-    border: 5px solid rgb(9, 6, 6);
-    margin: 2px;
-    padding: 5vh;
-    
-    
-}
-.Service3{
-    font-size: 20px;
-    font-family: Arial;
-    border: 5px solid rgb(4, 3, 3);
-    margin: 2px;
-    padding: 5vh;  
-}
-.uses{text-align: center;
-    text-transform: uppercase;
-    text-transform: initial;
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.ph{
-color:red;
-}
-.mail{
-    color:red;
-}
-.us1{
-    color: red;
-}
-.me1{
-border-radius: 10px;
+.nav-links {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
 }
 
-.new{
-    text-align: center;
-    border: 5px solid rgb(6, 4, 4);
-    margin: 2px;
-    padding: 5mm;   
+.nav-links a {
+  color: #111;
+  text-decoration: none;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeInUp 0.4s ease forwards;
 }
 
+.nav-links a:nth-child(1) { animation-delay: 0.1s; }
+.nav-links a:nth-child(2) { animation-delay: 0.2s; }
+.nav-links a:nth-child(3) { animation-delay: 0.3s; }
+.nav-links a:nth-child(4) { animation-delay: 0.4s; }
+.nav-links a:nth-child(5) { animation-delay: 0.5s; }
+.nav-links a:nth-child(6) { animation-delay: 0.6s; }
 
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
 
+.nav-links a:hover {
+  color: #00ccff;
+}
 
+/* Home Section */
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: 2px solid #000;
+  gap: 20px;
+}
 
-/* Container Styling */
+.home-left {
+  color: #111;
+  font-style: oblique;
+  flex: 1;
+}
+
+.home-right {
+  flex: 1;
+  text-align: center;
+}
+
+.logo2 {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.head {
+  font-style: normal;
+  font-size: 36px;
+  padding: 10px 0;
+}
+
+/* Services */
+.Services {
+  border: 5px solid #333;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.sh {
+  font-size: 32px;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sub-Services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.Service1, .Service2, .Service3 {
+  flex: 1 1 250px;
+  border: 2px solid #000;
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+}
+
+/* Contact */
+.uses {
+  text-align: center;
+  padding: 20px;
+}
+
+.ph, .mail {
+  color: red;
+}
+
+/* Feedback Form */
 form {
   max-width: 500px;
   margin: 50px auto;
@@ -187,10 +136,8 @@ form {
   background: #f4f7f8;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
 }
 
-/* Label Styling */
 form label {
   display: block;
   margin-bottom: 8px;
@@ -198,38 +145,55 @@ form label {
   color: #333;
 }
 
-/* Input and Textarea Styling */
-form input[type="text"],
-form input[type="email"],
-form textarea {
+form input, form textarea {
   width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  background: #fff;
-  font-size: 16px;
-  transition: border 0.3s ease;
 }
 
-form input:focus,
-form textarea:focus {
-  border-color: #0066cc;
-  outline: none;
-}
-
-/* Button Styling */
 form input[type="submit"] {
-  background-color: #0066cc;
+  background: #0066cc;
   color: #fff;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
 form input[type="submit"]:hover {
-  background-color: #0052a3;
+  background: #0052a3;
+}
+
+/* ✅ Mobile Responsive Fixes */
+@media screen and (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo2 {
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+  }
+
+  .sub-Services {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Service1, .Service2, .Service3 {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .head {
+    font-size: 24px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
 }
