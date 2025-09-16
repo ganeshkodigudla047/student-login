@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="about.css">
 </head>
 <body>
+    <div class="media">
     <div class="header1">
-        <h1>GANESH</h1>   
+        <h1>GANESH</h1 src="IMG_1666.jpg" alt="LOGO" onclick="toggleMenu()">   
     <div class="int">
         <a class="int1"  href="home.html">Home</a>
         <a class="int1"  href="about.html">About</a>
@@ -16,6 +17,12 @@
         <a class="int1"  href="contact.html">Contact</a>
          <a class="int1" href="register.html">register</a>
     </div>
+     <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("show");
+    }
+  </script>
     </div>
 
 
@@ -28,6 +35,7 @@
          
         </div>
         <div class="profile"><img src="IMG_1666.jpg" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; padding: 10vh;"></div>
+    </div>
     </div>
 </body>
 </html>
