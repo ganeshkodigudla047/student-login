@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+  <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+
+  <form id="feedback-form">
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Feedback:</label><br>
+    <textarea name="message" rows="5" required></textarea><br><br>
+
+    <input type="submit" value="Submit Feedback">
+
+    <p id="response" style="text-align:center;"></p>
+  </form>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwmirfiKEgscKmHyaSeftGJKo_nrdcMka0Q2BxQNnxJjdS4UugrWf5P-7fYK0aN383V/exec";
+    const form = document.getElementById("feedback-form");
+    const responseMsg = document.getElementById("response");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      fetch(scriptURL, { method: "POST", body: new FormData(form)})
+        .then(res => res.text())
+        .then(text => {
+          if (text.includes("Success")) {
+            responseMsg.innerHTML = "✅ Feedback submitted successfully! Redirecting...";
+            form.reset();
+            setTimeout(() => {
+              window.location.href = "home.html"; 
+            }, 1500);
+          } else {
+            throw new Error(text);
+          }
+        })
+        .catch(err => {
+          responseMsg.innerHTML = "❌ Feedback submission failed.";
+          console.error("Error!", err.message);
+        });
+    });
+  </script>
+
+</body>
+</html>
