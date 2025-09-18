@@ -1,166 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title class="title">GANESH</title>
-    <link rel="stylesheet" href="home.CSS">
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<script>
-  // ✅ Protect page: kick user if not logged in
-  if (localStorage.getItem("loggedIn") !== "true") {
-    window.location.href = "index.html";
-  }
-
-  // ✅ Logout function
-  function logout() {
-    localStorage.removeItem("loggedIn");
-    window.location.href = "index.html";
-  }
-</script>
-
-<style>
-  #navLinks {
-    display: none;
-    transition: all 1.5s;
-  }
-  #navLinks.show {
-    display: flex;
-    gap: 15px;
-  }
-</style>
-
-<div class="nav-container">
-  <img class="logo" id="logo" src="IMG_20250705_162604966_PORTRAIT.jpg" alt="LOGO">
-
-  <div class="nav-links">
-    <a href="home.html">Home</a>
-    <a href="#services">Services</a>
-    <a href="feedback.html">Feedback</a>
-    <a href="register.html">Register</a>
-    <a href="#" onclick="logout()">Logout</a> <!-- ✅ logout -->
-  </div>
-</div>
-
-<!-- Logo animation -->
-<script>
-  const logo = document.getElementById("logo");
-  const overlay = document.createElement("div");
-  overlay.classList.add("overlay");
-  document.body.appendChild(overlay);
-
-  logo.addEventListener("click", () => {
-    logo.classList.toggle("zoom");
-    overlay.classList.toggle("show");
-  });
-
-  overlay.addEventListener("click", () => {
-    logo.classList.remove("zoom");
-    overlay.classList.remove("show");
-  });
-</script>
-
-<div class="home">
-  <div class="home-left">
-      <h1 class="head">Ganesh</h1>
-      <p class="name">K.BALA GANESH MANIKANTA </p>
-      Visakhapatnam(dst.)<br>
-      AndhraPradesh.Pin:531173 <br>
-      Email : ganeshkodigudla047@gmail.com <br>
-      Call: 9849817764
-  </div>
-
-  <div class="home-right">
-      <img class="logo2" id="logo2" src="IMG_1666.jpg" alt="my LOGO">
-  </div>
-</div>
+  <form onsubmit="loginUser(event)">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" required><br><br>
+    <input type="password" id="password" placeholder="Password" required><br><br>
+    <button type="submit">Login</button>
+    <p id="response" style="color: red;"></p>
+    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+  </form>
 
 <script>
-  const logo2 = document.getElementById("logo2");
-  const overlay2 = document.createElement("div");
-  overlay2.id = "overlay2";
-  document.body.appendChild(overlay2);
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwAlcJjiPQGO2bs6pN_8plkJ4O7Or4W5X7ltG9Ovqu5TmfHc47oU3hQpTT_idVgFbdaIQ/exec";
 
-  logo2.addEventListener("click", () => {
-    logo2.classList.toggle("zoom");
-    overlay2.classList.toggle("show");
-  });
+  function loginUser(event) {
+    event.preventDefault();
 
-  overlay2.addEventListener("click", () => {
-    logo2.classList.remove("zoom");
-    overlay2.classList.remove("show");
-  });
-</script>
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-<div class="services" id="services">
-  <h1 class="sh">Services we offer</h1>
-  <div class="sub-services">
+    const formData = new FormData();
+    formData.append("action", "login");
+    formData.append("email", email);
+    formData.append("password", password);
 
-    <a href="https://ganesh20010407.github.io/student-login/" class="service">
-      <h2>Web Designing</h2>
-      <p>I will teach you how to do it.</p>
-      <img class="me1" src="https://img.icons8.com/?size=100&id=ejub91zEY6Sl&format=png&color=000000" alt="">
-    </a>
-
-    <a href="https://www.instagram.com/manikanta785?igsh=YnB5enU1bnRlcDV4" class="service">
-      <h2>Photography</h2>
-      <p>I will teach you how to do it.</p>
-      <img class="me1" src="https://img.icons8.com/?size=100&id=MfmzF6BiXHNG&format=png&color=000000" alt="">
-    </a>
-
-    <a href="web.html" class="service">
-      <h2>Working</h2>
-      <p>I will teach you how to do it.</p>
-      <img class="me1" src="https://img.icons8.com/?size=100&id=GDFE7o6cZBuY&format=png&color=000000" alt="">
-    </a>
-
-  </div>
-</div>
-
-<div class="new">
-  <div>
-    <label for="student">Student</label>
-    <select name="student" id="student" onchange="showDetails()">
-      <option value="">-- Select --</option>
-      <option value="ganesh">Ganesh</option>
-      <option value="luster">Luster</option>
-      <option value="gym_raat">Gym Raat</option>
-      <option value="baby">Baby</option>
-    </select>
-    <div id="details"></div>
-  </div>
-</div>
-
-<script>
-  function showDetails() {
-    const selected = document.getElementById("student").value;
-    const detailsDiv = document.getElementById("details");
-
-    const data = {
-      baby: "Poojitha is an active baby and a good artist in cry.",
-      ganesh: "Ganesh is a basketball player.",
-      luster: "Luster is a mobile game player.",
-      gym_raat: "Gym Raat is a gym boy focused on physical fitness."
-    };
-
-    if (data[selected]) {
-      detailsDiv.innerHTML = `<strong>${selected.replace('_', ' ').toUpperCase()}:</strong><br>${data[selected]}`;
-      detailsDiv.style.display = 'block';
-    } else {
-      detailsDiv.style.display = 'none';
-      detailsDiv.innerHTML = '';
-    }
+    fetch(scriptURL, { method: "POST", body: formData })
+      .then(res => res.text())
+      .then(response => {
+        console.log("Server response:", response);
+        if (response === "success") {
+          localStorage.setItem("loggedIn", "true");
+          localStorage.setItem("userEmail", email); // store user email
+          // ✅ Redirect with user info
+          window.location.href = "home.html?user=" + encodeURIComponent(email);
+        } else {
+          document.getElementById("response").textContent = "❌ Invalid email or password.";
+        }
+      })
+      .catch(error => {
+        console.error("Login error:", error);
+        document.getElementById("response").textContent = "❌ Network error.";
+      });
   }
 </script>
-
-<div class="uses">
-  <h1 class="us">Contact us</h1>
-  <p class="ph">Ph.no:0123456789</p>
-  <p class="mail">mail:soandso@gmail.com</p>
-  <a href="youtube.com">click here</a>
-</div>
 
 </body>
 </html>
+
