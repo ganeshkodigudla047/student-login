@@ -35,8 +35,10 @@
       .then(response => {
         console.log("Server response:", response);
         if (response === "success") {
-          localStorage.setItem("loggedIn", "true"); // ✅ save login
-          window.location.href = "home.html";
+          localStorage.setItem("loggedIn", "true");
+          localStorage.setItem("userEmail", email); // store user email
+          // ✅ Redirect with user info
+          window.location.href = "home.html?user=" + encodeURIComponent(email);
         } else {
           document.getElementById("response").textContent = "❌ Invalid email or password.";
         }
