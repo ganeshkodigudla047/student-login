@@ -2,54 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GANESH</title>
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
 
-  <form onsubmit="loginUser(event)">
-    <h2>Login</h2>
-    <input type="email" id="email" placeholder="Email" required><br><br>
-    <input type="password" id="password" placeholder="Password" required><br><br>
-    <button type="submit">Login</button>
-    <p id="response" style="color: red;"></p>
-    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
-  </form>
+<script>
+  // ✅ Check login state
+  const urlParams = new URLSearchParams(window.location.search);
+  const user = urlParams.get("user");
+  const loggedIn = localStorage.getItem("loggedIn");
+
+  if (loggedIn !== "true" || !user) {
+    window.location.href = "index.html";
+  }
+
+  // ✅ Logout
+  function logout() {
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("userEmail");
+    window.location.href = "index.html";
+  }
+</script>
+
+<div class="nav-container">
+  <img class="logo" id="logo" src="IMG_20250705_162604966_PORTRAIT.jpg" alt="LOGO">
+
+  <div class="nav-links">
+    <a href="home.html">Home</a>
+    <a href="#services">Services</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="register.html">Register</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </div>
+</div>
+
+<div class="home">
+  <div class="home-left">
+    <h1 class="head">Welcome, <span id="userName"></span> 🎉</h1>
+    <p class="name">K.BALA GANESH MANIKANTA</p>
+    Visakhapatnam(dst.)<br>
+    AndhraPradesh.Pin:531173 <br>
+    Email: <span id="userEmail"></span> <br>
+    Call: 9849817764
+  </div>
+
+  <div class="home-right">
+    <img class="logo2" id="logo2" src="IMG_1666.jpg" alt="my LOGO">
+  </div>
+</div>
+
+<div class="services" id="services">
+  <h1 class="sh">Services we offer</h1>
+  <div class="sub-services">
+    <a href="https://ganesh20010407.github.io/student-login/" class="service">
+      <h2>Web Designing</h2>
+      <p>I will teach you how to do it.</p>
+      <img class="me1" src="https://img.icons8.com/?size=100&id=ejub91zEY6Sl&format=png&color=000000" alt="">
+    </a>
+
+    <a href="https://www.instagram.com/manikanta785?igsh=YnB5enU1bnRlcDV4" class="service">
+      <h2>Photography</h2>
+      <p>I will teach you how to do it.</p>
+      <img class="me1" src="https://img.icons8.com/?size=100&id=MfmzF6BiXHNG&format=png&color=000000" alt="">
+    </a>
+
+    <a href="web.html" class="service">
+      <h2>Working</h2>
+      <p>I will teach you how to do it.</p>
+      <img class="me1" src="https://img.icons8.com/?size=100&id=GDFE7o6cZBuY&format=png&color=000000" alt="">
+    </a>
+  </div>
+</div>
+
+<div class="uses">
+  <h1 class="us">Contact us</h1>
+  <p class="ph">Ph.no:0123456789</p>
+  <p class="mail">mail:soandso@gmail.com</p>
+  <a href="youtube.com">click here</a>
+</div>
 
 <script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbwAlcJjiPQGO2bs6pN_8plkJ4O7Or4W5X7ltG9Ovqu5TmfHc47oU3hQpTT_idVgFbdaIQ/exec";
-
-  function loginUser(event) {
-    event.preventDefault();
-
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    const formData = new FormData();
-    formData.append("action", "login");
-    formData.append("email", email);
-    formData.append("password", password);
-
-    fetch(scriptURL, { method: "POST", body: formData })
-      .then(res => res.text())
-      .then(response => {
-        console.log("Server response:", response);
-        if (response === "success") {
-          localStorage.setItem("loggedIn", "true");
-          localStorage.setItem("userEmail", email); // store user email
-          // ✅ Redirect with user info
-          window.location.href = "home.html?user=" + encodeURIComponent(email);
-        } else {
-          document.getElementById("response").textContent = "❌ Invalid email or password.";
-        }
-      })
-      .catch(error => {
-        console.error("Login error:", error);
-        document.getElementById("response").textContent = "❌ Network error.";
-      });
-  }
+  // ✅ Show logged-in user info
+  const savedEmail = localStorage.getItem("userEmail");
+  document.getElementById("userEmail").textContent = savedEmail || user;
+  document.getElementById("userName").textContent = savedEmail ? savedEmail.split("@")[0] : user;
 </script>
 
 </body>
 </html>
-
