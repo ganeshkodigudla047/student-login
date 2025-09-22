@@ -19,6 +19,11 @@
 <script>
   const scriptURL = "https://script.google.com/macros/s/AKfycbwAlcJjiPQGO2bs6pN_8plkJ4O7Or4W5X7ltG9Ovqu5TmfHc47oU3hQpTT_idVgFbdaIQ/exec";
 
+  // Prevent going back to login page if already logged in
+  if (localStorage.getItem("loggedIn") === "true") {
+    window.location.href = "home.html?user=" + encodeURIComponent(localStorage.getItem("userEmail"));
+  }
+
   function loginUser(event) {
     event.preventDefault();
 
@@ -37,7 +42,6 @@
         if (response === "success") {
           localStorage.setItem("loggedIn", "true");
           localStorage.setItem("userEmail", email); // store user email
-          // ✅ Redirect with user info
           window.location.href = "home.html?user=" + encodeURIComponent(email);
         } else {
           document.getElementById("response").textContent = "❌ Invalid email or password.";
