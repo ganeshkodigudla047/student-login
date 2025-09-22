@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GANESH</title>
-  <link rel="stylesheet" href="home.CSS">
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
 
@@ -88,7 +88,7 @@
 <!-- ✅ Contact -->
 <div class="uses">
   <h1 class="us">Contact us</h1>
-  <p class="ph">Ph.no:09849817764</p>
+  <p class="ph">Ph.no:0123456789</p>
   <p class="mail">mail:soandso@gmail.com</p>
   <a href="https://youtube.com" target="_blank">click here</a>
 </div>
@@ -99,8 +99,39 @@
   const username = savedEmail ? savedEmail.split("@")[0] : "User";
   document.getElementById("userEmail").textContent = savedEmail;
   document.getElementById("userName").textContent = username.charAt(0).toUpperCase() + username.slice(1);
+
+  // ✅ Logo zoom + overlay animation for both logos
+  const logos = [document.getElementById("logo"), document.getElementById("logo2")];
+
+  // Create overlay once
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+  document.body.appendChild(overlay);
+
+  logos.forEach(lg => {
+    lg.addEventListener("click", () => {
+      lg.classList.toggle("zoom");
+      overlay.classList.toggle("show");
+
+      // Stop idle animation if logo2
+      if (lg.id === "logo2") {
+        if (lg.classList.contains("zoom")) {
+          lg.style.animation = "none";
+        } else {
+          lg.style.animation = "idleZoom 2s ease-in-out infinite";
+        }
+      }
+    });
+  });
+
+  overlay.addEventListener("click", () => {
+    logos.forEach(lg => {
+      lg.classList.remove("zoom");
+      if (lg.id === "logo2") lg.style.animation = "idleZoom 2s ease-in-out infinite";
+    });
+    overlay.classList.remove("show");
+  });
 </script>
 
 </body>
 </html>
-
