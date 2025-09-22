@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GANESH</title>
-  <!-- ✅ Correct lowercase CSS link -->
   <link rel="stylesheet" href="home.CSS">
 </head>
 <body>
@@ -16,10 +15,16 @@
   const loggedIn = localStorage.getItem("loggedIn");
 
   if (loggedIn !== "true" || !user) {
-    window.location.href = "index.html";
+    window.location.href = "index.html"; // Redirect if not logged in
   }
 
-  // ✅ Logout
+  // ✅ Prevent back button after logout
+  window.history.pushState(null, null, window.location.href);
+  window.onpopstate = function () {
+    window.history.go(1);
+  };
+
+  // ✅ Logout function
   function logout() {
     localStorage.removeItem("loggedIn");
     localStorage.removeItem("userEmail");
@@ -83,20 +88,18 @@
 <!-- ✅ Contact -->
 <div class="uses">
   <h1 class="us">Contact us</h1>
-  <p class="ph">Ph.no:0123456789</p>
+  <p class="ph">Ph.no:09849817764</p>
   <p class="mail">mail:soandso@gmail.com</p>
   <a href="https://youtube.com" target="_blank">click here</a>
 </div>
 
 <script>
   // ✅ Show logged-in user info
-  const savedEmail = localStorage.getItem("userEmail");
-  const username = savedEmail ? savedEmail.split("@")[0] : user;
-  document.getElementById("userEmail").textContent = savedEmail || user;
+  const savedEmail = localStorage.getItem("userEmail") || user;
+  const username = savedEmail ? savedEmail.split("@")[0] : "User";
+  document.getElementById("userEmail").textContent = savedEmail;
   document.getElementById("userName").textContent = username.charAt(0).toUpperCase() + username.slice(1);
 </script>
 
 </body>
 </html>
-
-
