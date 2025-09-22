@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GANESH</title>
+  <!-- ✅ Correct lowercase CSS link -->
   <link rel="stylesheet" href="home.css">
 </head>
 <body>
@@ -26,18 +27,20 @@
   }
 </script>
 
+<!-- ✅ Navbar -->
 <div class="nav-container">
-  <img class="logo" id="logo" src="IMG_20250705_162604966_PORTRAIT.jpg" alt="LOGO">
+  <img class="logo" id="logo" src="IMG_20250705_162604966_PORTRAIT.jpg" alt="User Logo">
 
   <div class="nav-links">
     <a href="home.html">Home</a>
     <a href="#services">Services</a>
     <a href="feedback.html">Feedback</a>
     <a href="register.html">Register</a>
-    <a href="#" onclick="logout()">Logout</a>
+    <a href="javascript:void(0)" onclick="logout()">Logout</a>
   </div>
 </div>
 
+<!-- ✅ Home Section -->
 <div class="home">
   <div class="home-left">
     <h1 class="head">Welcome, <span id="userName"></span> 🎉</h1>
@@ -49,46 +52,50 @@
   </div>
 
   <div class="home-right">
-    <img class="logo2" id="logo2" src="IMG_1666.jpg" alt="my LOGO">
+    <img class="logo2" id="logo2" src="IMG_1666.jpg" alt="Profile Logo">
   </div>
 </div>
 
+<!-- ✅ Services -->
 <div class="services" id="services">
   <h1 class="sh">Services we offer</h1>
   <div class="sub-services">
-    <a href="https://ganesh20010407.github.io/student-login/" class="service">
+    <a href="https://ganesh20010407.github.io/student-login/" class="service" target="_blank">
       <h2>Web Designing</h2>
       <p>I will teach you how to do it.</p>
-      <img class="me1" src="https://img.icons8.com/?size=100&id=ejub91zEY6Sl&format=png&color=000000" alt="">
+      <img class="me1" src="https://img.icons8.com/?size=100&id=ejub91zEY6Sl&format=png&color=000000" alt="Web Design Icon">
     </a>
 
-    <a href="https://www.instagram.com/manikanta785?igsh=YnB5enU1bnRlcDV4" class="service">
+    <a href="https://www.instagram.com/manikanta785?igsh=YnB5enU1bnRlcDV4" class="service" target="_blank">
       <h2>Photography</h2>
       <p>I will teach you how to do it.</p>
-      <img class="me1" src="https://img.icons8.com/?size=100&id=MfmzF6BiXHNG&format=png&color=000000" alt="">
+      <img class="me1" src="https://img.icons8.com/?size=100&id=MfmzF6BiXHNG&format=png&color=000000" alt="Photography Icon">
     </a>
 
     <a href="web.html" class="service">
       <h2>Working</h2>
       <p>I will teach you how to do it.</p>
-      <img class="me1" src="https://img.icons8.com/?size=100&id=GDFE7o6cZBuY&format=png&color=000000" alt="">
+      <img class="me1" src="https://img.icons8.com/?size=100&id=GDFE7o6cZBuY&format=png&color=000000" alt="Working Icon">
     </a>
   </div>
 </div>
 
+<!-- ✅ Contact -->
 <div class="uses">
   <h1 class="us">Contact us</h1>
   <p class="ph">Ph.no:0123456789</p>
   <p class="mail">mail:soandso@gmail.com</p>
-  <a href="youtube.com">click here</a>
+  <a href="https://youtube.com" target="_blank">click here</a>
 </div>
 
 <script>
   // ✅ Show logged-in user info
   const savedEmail = localStorage.getItem("userEmail");
+  const username = savedEmail ? savedEmail.split("@")[0] : user;
   document.getElementById("userEmail").textContent = savedEmail || user;
-  document.getElementById("userName").textContent = savedEmail ? savedEmail.split("@")[0] : user;
+  document.getElementById("userName").textContent = username.charAt(0).toUpperCase() + username.slice(1);
 </script>
 
 </body>
 </html>
+
